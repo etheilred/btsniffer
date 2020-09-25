@@ -24,6 +24,7 @@ namespace BLESniffer.WPF
         {
             ServiceCollection services = new ServiceCollection();
             services.AddSingleton<Service.ManufacturerDataService>();
+            services.AddSingleton<Service.BluetoothService>();
 
             AppContainer = services.BuildServiceProvider();
         }

@@ -563,11 +563,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aleksandr.smirnov\\source\\repos\\TutorialsGit\\BLESniffer.WPF\\BLESniffer.WPF.csproj",
+      "projectUniqueName": "C:\\Users\\aleksandr.smirnov\\source\\repos\\btsniffer\\BLESniffer.WPF\\BLESniffer.WPF.csproj",
       "projectName": "BLESniffer.WPF",
-      "projectPath": "C:\\Users\\aleksandr.smirnov\\source\\repos\\TutorialsGit\\BLESniffer.WPF\\BLESniffer.WPF.csproj",
+      "projectPath": "C:\\Users\\aleksandr.smirnov\\source\\repos\\btsniffer\\BLESniffer.WPF\\BLESniffer.WPF.csproj",
       "packagesPath": "C:\\Users\\aleksandr.smirnov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aleksandr.smirnov\\source\\repos\\TutorialsGit\\BLESniffer.WPF\\obj\\",
+      "outputPath": "C:\\Users\\aleksandr.smirnov\\source\\repos\\btsniffer\\BLESniffer.WPF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

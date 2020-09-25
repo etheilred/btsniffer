@@ -10,6 +10,6 @@
         <VM:MainViewModel/>
     </Window.DataContext>
     <Grid>
-        <DataGrid ItemsSource="{Binding bag}"></DataGrid>
+        <DataGrid ItemsSource="{Binding Data}"></DataGrid>
     </Grid>
 </Window>

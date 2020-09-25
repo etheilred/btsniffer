@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ud00Hmduqt5C7uKF8DP4mUc/b6Ib9cCHXfN3+rprZSPmjeEQ5w8XzToQl30+oNYRJWXTG2wUj3w05BwM2CoKrQ==",
+  "dgSpecHash": "dYDftMk1eS1Uv3xCTC28VYjZuVokHaWP2NqVVfCkaA98sK4qELlLBSWti2NiKR53FXZlJO05krfEvhwWnNx+gg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aleksandr.smirnov\\source\\repos\\TutorialsGit\\BLESniffer.WPF\\BLESniffer.WPF.csproj",
+  "projectFilePath": "C:\\Users\\aleksandr.smirnov\\source\\repos\\btsniffer\\BLESniffer.WPF\\BLESniffer.WPF.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aleksandr.smirnov\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.8\\microsoft.extensions.dependencyinjection.3.1.8.nupkg.sha512",
     "C:\\Users\\aleksandr.smirnov\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.8\\microsoft.extensions.dependencyinjection.abstractions.3.1.8.nupkg.sha512",

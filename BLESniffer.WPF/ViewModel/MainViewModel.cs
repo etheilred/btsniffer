@@ -1,4 +1,5 @@
 ﻿using BLESniffer.WPF.Model;
+using BLESniffer.WPF.Service;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -14,42 +15,21 @@ namespace BLESniffer.WPF.ViewModel
 {
     public class MainViewModel
     {
-        public ObservableCollection<BLEModel> bag { get; set; } = new ObservableCollection<BLEModel>();
+        public ObservableCollection<BLEModel> Data { get; set; } = new ObservableCollection<BLEModel>();
 
-        private BluetoothLEAdvertisementWatcher watcher;
-
+        readonly BluetoothService bluetoothService;
         public MainViewModel()
         {
-            watcher = new BluetoothLEAdvertisementWatcher();
-            watcher.Received += Watcher_Received;
-            watcher.Start();
+            bluetoothService = App.AppContainer.GetService(typeof(BluetoothService)) as BluetoothService;
+            bluetoothService.NewDateRecieved += BluetoothService_NewDateRecieved;
         }
 
-        private void Watcher_Received(BluetoothLEAdvertisementWatcher sender, BluetoothLEAdvertisementReceivedEventArgs args)
+        private void BluetoothService_NewDateRecieved(object _sender, BLEModel _bleModel)
         {
-            var manufacturerDataCollection = args.Advertisement.ManufacturerData.ToList();
-            foreach (var item in manufacturerDataCollection)
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                var result = new BLEModel();
-                result.Company = item.CompanyId;
-                result.Data = ReadBuffer(item.Data);
-                result.ID = args.BluetoothAddress;
-
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    bag.Add(result);
-                },DispatcherPriority.Normal);
-            }
-        }
-
-        public byte[] ReadBuffer(IBuffer theBuffer)
-        {
-            byte[] result = new byte[theBuffer.Length];
-            using (var dataReader = DataReader.FromBuffer(theBuffer))
-            {
-                dataReader.ReadBytes(result);
-            }
-            return result;
+                Data.Add(_bleModel);
+            }, DispatcherPriority.Normal);
         }
     }
 }
