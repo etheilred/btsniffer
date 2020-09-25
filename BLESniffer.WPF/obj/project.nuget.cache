@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "ud00Hmduqt5C7uKF8DP4mUc/b6Ib9cCHXfN3+rprZSPmjeEQ5w8XzToQl30+oNYRJWXTG2wUj3w05BwM2CoKrQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\aleksandr.smirnov\\source\\repos\\TutorialsGit\\BLESniffer.WPF\\BLESniffer.WPF.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aleksandr.smirnov\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.8\\microsoft.extensions.dependencyinjection.3.1.8.nupkg.sha512",
+    "C:\\Users\\aleksandr.smirnov\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.8\\microsoft.extensions.dependencyinjection.abstractions.3.1.8.nupkg.sha512",
+    "C:\\Users\\aleksandr.smirnov\\.nuget\\packages\\microsoft.netcore.platforms\\3.0.0\\microsoft.netcore.platforms.3.0.0.nupkg.sha512",
+    "C:\\Users\\aleksandr.smirnov\\.nuget\\packages\\microsoft.windows.sdk.contracts\\10.0.19041.1\\microsoft.windows.sdk.contracts.10.0.19041.1.nupkg.sha512",
+    "C:\\Users\\aleksandr.smirnov\\.nuget\\packages\\system.runtime.windowsruntime\\4.6.0\\system.runtime.windowsruntime.4.6.0.nupkg.sha512",
+    "C:\\Users\\aleksandr.smirnov\\.nuget\\packages\\system.runtime.windowsruntime.ui.xaml\\4.6.0\\system.runtime.windowsruntime.ui.xaml.4.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}
