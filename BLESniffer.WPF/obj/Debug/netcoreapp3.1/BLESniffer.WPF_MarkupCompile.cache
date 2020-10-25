@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\aleksandr.smirnov\source\repos\btsniffer\BLESniffer.WPF\App.xaml
-11151548125
+4-1137814245
 
-7109073875
-282-1036389630
-MainWindow.xaml;
+20157216481
+306-1536389119
+MainWindow.xaml;View\ApplicationBar.xaml;View\DisplayRawData.xaml;View\Filters.xaml;
 
 False
 

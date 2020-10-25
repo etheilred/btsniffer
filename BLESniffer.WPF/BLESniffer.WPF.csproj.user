@@ -7,7 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\ApplicationBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DisplayRawData.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Filters.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ApplicationBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DisplayRawData.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Filters.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

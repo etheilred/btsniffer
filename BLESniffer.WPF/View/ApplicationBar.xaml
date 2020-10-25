@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="BLESniffer.WPF.View.ApplicationBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="GhostWhite"/>
+            <Setter Property="Foreground" Value="DimGray"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </UserControl.Resources>
+    <DockPanel>
+        <ToggleButton  
+            DockPanel.Dock="Top"
+            ContentTemplateSelector="{x:Null}"
+            IsChecked="{Binding ScanningState}">
+            <ToggleButton.Style>
+                <Style TargetType="{x:Type ToggleButton}">
+                    <Setter Property="Background" Value="GhostWhite"/>
+                    <Setter Property="BorderBrush" Value="DarkGreen"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="Foreground" Value="DimGray"/>
+                    <Setter Property="Content" Value="Scanning"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ScanningState}" Value="False">
+                            <Setter Property="Content" Value="Stopped"/>
+                            <Setter Property="BorderBrush" Value="Red"/>
+                        </DataTrigger>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ToggleButton.Style>
+        </ToggleButton>
+        <Button DockPanel.Dock="Top"  HorizontalAlignment="Stretch" Content="Export" Command="{Binding ExportData}"/>
+
+        <TextBlock DockPanel.Dock="Bottom" Text="{Binding Info}" Height="35"/>
+    </DockPanel>
+</UserControl>

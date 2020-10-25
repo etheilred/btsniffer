@@ -17,5 +17,10 @@
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.windows.sdk.contracts\10.0.19041.1\build\Microsoft.Windows.SDK.Contracts.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.sdk.contracts\10.0.19041.1\build\Microsoft.Windows.SDK.Contracts.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design\3.1.8\build\netcoreapp2.0\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design\3.1.8\build\netcoreapp2.0\Microsoft.EntityFrameworkCore.Design.props')" />
   </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgNewtonsoft_Json Condition=" '$(PkgNewtonsoft_Json)' == '' ">C:\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\10.0.1</PkgNewtonsoft_Json>
+    <PkgMicrosoft_Xaml_Behaviors_Wpf Condition=" '$(PkgMicrosoft_Xaml_Behaviors_Wpf)' == '' ">C:\Users\aleksandr.smirnov\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.19</PkgMicrosoft_Xaml_Behaviors_Wpf>
+  </PropertyGroup>
 </Project>

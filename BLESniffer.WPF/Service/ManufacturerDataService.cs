@@ -10,7 +10,7 @@ namespace BLESniffer.WPF.Service
 {
     public class ManufacturerDataService
     {
-        Dictionary<ulong, string> IdToName = new Dictionary<ulong, string>();
+        public Dictionary<ulong, string> IdToName = new Dictionary<ulong, string>();
 
         public ManufacturerDataService()
         {

@@ -1,6 +1,7 @@
 ﻿using BLESniffer.WPF.Model;
 using System;
 using System.Linq;
+using System.Windows.Documents;
 using Windows.Devices.Bluetooth.Advertisement;
 using Windows.Storage.Streams;
 
@@ -20,15 +21,15 @@ namespace BLESniffer.WPF.Service
             watcher.Start();
         }
 
-        private void Watcher_Received(BluetoothLEAdvertisementWatcher _sender, BluetoothLEAdvertisementReceivedEventArgs _args)
+        private void Watcher_Received(BluetoothLEAdvertisementWatcher sender, BluetoothLEAdvertisementReceivedEventArgs args)
         {
-            var manufacturerDataCollection = _args.Advertisement.ManufacturerData.ToList();
+            var manufacturerDataCollection = args.Advertisement.ManufacturerData.ToList();
             foreach (var item in manufacturerDataCollection)
             {
                 var result = new BLEModel();
-                result.Company = item.CompanyId;
+                result.Manufacturer = new ManufacturerData() { ManufacturerID = item.CompanyId };
                 result.Data = ReadBuffer(item.Data);
-                result.ID = _args.BluetoothAddress;
+                result.ID = args.BluetoothAddress;
                 NewDateRecieved?.Invoke(this, result);
             }
         }
@@ -41,6 +42,41 @@ namespace BLESniffer.WPF.Service
                 dataReader.ReadBytes(result);
             }
             return result;
+        }
+
+        public void AddFilters(BLEWatcherFilter filter)
+        {
+            watcher.Stop();
+            watcher.AdvertisementFilter.Advertisement.ServiceUuids.Clear();
+            watcher.AdvertisementFilter.Advertisement.ManufacturerData.Clear();
+
+            foreach (var item in filter.GuidFilters)
+                watcher.AdvertisementFilter.Advertisement.ServiceUuids.Add(item);
+            foreach (var item in filter.ManufacturersFilters)
+            {
+                var manufacturerData = new BluetoothLEManufacturerData();
+                manufacturerData.CompanyId = item.CompanyId;
+                watcher.AdvertisementFilter.Advertisement.ManufacturerData.Add(manufacturerData);
+            }
+
+            watcher.Start();
+        }
+
+        public bool CurrentScanningState
+        {
+            get
+            {
+                if (watcher.Status == BluetoothLEAdvertisementWatcherStatus.Started)
+                    return true;
+                return false;
+            }
+        }
+        public void ChangeScanningState()
+        {
+            if (CurrentScanningState)
+                watcher.Stop();
+            else
+                watcher.Start();
         }
     }
 }

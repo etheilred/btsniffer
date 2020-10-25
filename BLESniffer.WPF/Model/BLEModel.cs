@@ -1,11 +1,11 @@
 ﻿using BLESniffer.WPF.Service;
 using System;
-using System.Collections.Generic;
 using System.Security.Policy;
 using System.Text;
 
 namespace BLESniffer.WPF.Model
 {
+
     public class BLEModel
     {
         readonly ManufacturerDataService manufacturerDataService;
@@ -14,16 +14,8 @@ namespace BLESniffer.WPF.Model
         {
             manufacturerDataService = App.AppContainer.GetService(typeof(ManufacturerDataService)) as ManufacturerDataService;
         }
-
         public ulong ID { get; set; }
-        public string Manufacturer 
-        {
-            get
-            {
-                return manufacturerDataService.GetManufacturerName(Company);
-            } 
-        }
-        public ushort Company { get; set; }
+        public ManufacturerData Manufacturer { get; set; }
         public byte[] Data { get; set; }
 
         public string DataDisplay
