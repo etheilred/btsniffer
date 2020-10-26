@@ -1,5 +1,6 @@
 ﻿using BLESniffer.WPF.Common;
 using BLESniffer.WPF.Service;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.ApplicationModel.Appointments.AppointmentsProvider;
 
@@ -14,8 +15,12 @@ namespace BLESniffer.WPF.ViewModel
             get => _bluetoothService.CurrentScanningState;
             set
             {
-                _bluetoothService.ChangeScanningState();
-                OnPropertyChanged(nameof(ScanningState));
+                Task.Run(async () =>
+                {
+                    _bluetoothService.ChangeScanningState();
+                    await Task.Delay(100);
+                    OnPropertyChanged(nameof(ScanningState));
+                });
             }
         }
 
@@ -37,6 +42,10 @@ namespace BLESniffer.WPF.ViewModel
             _bluetoothService = bluetoothService;
         }
 
+        /// <summary>
+        /// bla bla bla
+        /// </summary>
+        /// <param name="arg">Optional parameter</param>
         private async void ExportRawData(object arg)
         {
             var exportService = App.AppContainer.GetService(typeof(ExportService)) as ExportService;

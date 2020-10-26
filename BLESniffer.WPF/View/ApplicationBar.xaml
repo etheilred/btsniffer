@@ -8,36 +8,90 @@
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="GhostWhite"/>
-            <Setter Property="Foreground" Value="DimGray"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="AliceBlue"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type ToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Viewbox>
+                            <Border x:Name="Border" CornerRadius="10"
+                            Background="#FFFFFFFF"
+                            Width="40" Height="20">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0.5" Direction="0" Opacity="0.3" />
+                                </Border.Effect>
+                                <Ellipse x:Name="Ellipse" Fill="#FFFFFFFF" Stretch="Uniform"
+                                 Margin="2 1 2 1"
+                                 Stroke="Gray" StrokeThickness="0.2"
+                                 HorizontalAlignment="Stretch">
+                                    <Ellipse.Effect>
+                                        <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="0.3" Direction="260" />
+                                    </Ellipse.Effect>
+                                </Ellipse>
+                            </Border>
+                        </Viewbox>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="Checked">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="Border"
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#FF4CD661"
+                                                    Duration="0:0:0.1" />
+                                        <ThicknessAnimation Storyboard.TargetName="Ellipse"
+                                                        Storyboard.TargetProperty="Margin"
+                                                        To="20 1 2 1"
+                                                        Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Unchecked">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="Border"
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="White"
+                                                    Duration="0:0:0.1" />
+                                        <ThicknessAnimation Storyboard.TargetName="Ellipse"
+                                                        Storyboard.TargetProperty="Margin"
+                                                        To="2 1 2 1"
+                                                        Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </UserControl.Resources>
-    <DockPanel>
+    <DockPanel LastChildFill="False" >
+        <WrapPanel DockPanel.Dock="Top">
+            <TextBlock Width="150">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Text" Value="Scanning for BLE Telegrams"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ScanningState}" Value="false">
+                                <Setter Property="Text" Value="Stopped scanning"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
         <ToggleButton  
-            DockPanel.Dock="Top"
-            ContentTemplateSelector="{x:Null}"
-            IsChecked="{Binding ScanningState}">
-            <ToggleButton.Style>
-                <Style TargetType="{x:Type ToggleButton}">
-                    <Setter Property="Background" Value="GhostWhite"/>
-                    <Setter Property="BorderBrush" Value="DarkGreen"/>
-                    <Setter Property="BorderThickness" Value="2"/>
-                    <Setter Property="Foreground" Value="DimGray"/>
-                    <Setter Property="Content" Value="Scanning"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ScanningState}" Value="False">
-                            <Setter Property="Content" Value="Stopped"/>
-                            <Setter Property="BorderBrush" Value="Red"/>
-                        </DataTrigger>
-                        <EventTrigger RoutedEvent="MouseEnter">
-                            
-                        </EventTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ToggleButton.Style>
-        </ToggleButton>
-        <Button DockPanel.Dock="Top"  HorizontalAlignment="Stretch" Content="Export" Command="{Binding ExportData}"/>
-
+            Height="20"
+            HorizontalAlignment="Right"
+            IsChecked="{Binding ScanningState}"/>
+        </WrapPanel>
+        <Button DockPanel.Dock="Bottom"  HorizontalAlignment="Stretch" Content="Export" Command="{Binding ExportData}"/>
         <TextBlock DockPanel.Dock="Bottom" Text="{Binding Info}" Height="35"/>
     </DockPanel>
 </UserControl>

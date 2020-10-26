@@ -66,9 +66,9 @@ namespace BLESniffer.WPF.Service
         {
             get
             {
-                if (watcher.Status == BluetoothLEAdvertisementWatcherStatus.Started)
-                    return true;
-                return false;
+                if (watcher.Status == BluetoothLEAdvertisementWatcherStatus.Stopped)
+                    return false;
+                return true;
             }
         }
         public void ChangeScanningState()

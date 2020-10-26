@@ -19,7 +19,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Views:ApplicationBar Grid.ColumnSpan="2"/>
+        <Views:ApplicationBar Grid.Column="0"/>
         <Views:Filters Grid.Row="1" Grid.RowSpan="2"/>
         <Views:DisplayRawData Grid.Column="1" Grid.RowSpan="2"/>
     </Grid>
